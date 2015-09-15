@@ -11,3 +11,9 @@ RUN		echo 'deb http://rep.logentries.com/ jessie main' > /etc/apt/sources.list.d
 		apt-get clean autoclean && \
 		apt-get autoremove --yes && \
 		rm -rf /var/lib/{apt,dpkg,cache,log}/
+
+ADD		docker-entrypoint.sh /usr/local/sbin/docker-entrypoint.sh
+
+ENTRYPOINT	["/usr/local/sbin/docker-entrypoint.sh"]
+
+CMD		["/usr/bin/le", "monitor"]
